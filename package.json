@@ -1,9 +1,22 @@
 {
-  "name": "deskwork-server",
-  "version": "1.0.0",
-  "description": "Deskwork signaling server",
-  "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "engines": { "node": ">=16" },
-  "dependencies": { "ws": "8.18.0" }
+  "name": "deskwork",
+  "version": "1.1.0",
+  "description": "Deskwork - remote desktop",
+  "author": "Deskwork",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win"
+  },
+  "devDependencies": {
+    "electron": "22.3.27",
+    "electron-builder": "23.6.0"
+  },
+  "build": {
+    "appId": "com.deskwork.app",
+    "productName": "Deskwork",
+    "files": ["main.js", "preload.js", "index.html", "renderer.js"],
+    "win": { "target": [{ "target": "nsis", "arch": ["x64", "ia32"] }] },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
 }
